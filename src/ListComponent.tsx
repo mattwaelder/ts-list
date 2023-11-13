@@ -1,6 +1,7 @@
 import React from "react";
 import ListElement from "./ListElement";
 
+//props object
 type ListComponentProps = {
   list: string[];
   handleDel: any;

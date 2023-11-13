@@ -1,5 +1,6 @@
 import React from "react";
 
+//props object
 type InputProps = {
   handleChange: any;
   handleSubmit: any;

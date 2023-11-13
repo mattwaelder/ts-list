@@ -1,5 +1,6 @@
 import React from "react";
 
+//props object
 type ListElementProps = {
   item: string;
   index: number;

@@ -6,29 +6,34 @@ import Input from "./Input";
 import ListComponent from "./ListComponent";
 
 function App() {
+  //states
   const [list, setList] = useState(["apples", "romaine", "tooth paste"]);
   const [curr, setCurr] = useState("");
 
+  //functions
+  //controlled component handler
   const handleChange = (val: string): void => {
     setCurr(val);
   };
 
+  //submit new item
   const handleSubmit = (e: any): void => {
     e.preventDefault();
-
     let listCopy = [...list];
     listCopy.push(curr);
     setList(listCopy);
+    //reset curr to clear text field and state
     setCurr("");
   };
 
+  //remove list element based on index
   const handleDel = (index: number): void => {
-    console.log("delete index", index, ": ", list[index]);
     let listCopy = [...list];
     listCopy.splice(index, 1);
     setList(listCopy);
   };
 
+  //practicing inline styles, i hate it :)
   return (
     <div
       className="App"
