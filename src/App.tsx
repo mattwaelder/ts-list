@@ -1,24 +1,35 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { useState } from "react";
+import logo from "./logo.svg";
+import "./App.css";
+import Input from "./Input";
+import ListComponent from "./ListComponent";
 
 function App() {
+  const [list, setList] = useState(["apples", "bananas"]);
+  const [curr, setCurr] = useState("");
+
+  const handleChange = (val: string): void => {
+    setCurr(val);
+  };
+
+  const handleSubmit = (e: any): void => {
+    e.preventDefault();
+
+    let listCopy = [...list];
+    listCopy.push(curr);
+    setList(listCopy);
+    setCurr("");
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Input
+        handleChange={handleChange}
+        handleSubmit={handleSubmit}
+        curr={curr}
+      />
+      <ListComponent list={list} />
     </div>
   );
 }
