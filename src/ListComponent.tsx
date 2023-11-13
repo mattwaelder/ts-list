@@ -3,13 +3,24 @@ import ListElement from "./ListElement";
 
 type ListComponentProps = {
   list: string[];
+  handleDel: any;
 };
 
-const ListComponent = function ({ list }: ListComponentProps) {
+const ListComponent = function ({ list, handleDel }: ListComponentProps) {
   return (
-    <ul>
+    <ul
+      style={{
+        width: "250px",
+        height: "auto",
+        fontSize: "1.5em",
+        textAlign: "left",
+        paddingLeft: "0",
+      }}
+    >
       {list.map((el: string, i) => (
-        <ListElement item={el} key={i} />
+        <li key={i}>
+          <ListElement item={el} index={i} handleDel={handleDel} />
+        </li>
       ))}
     </ul>
   );
